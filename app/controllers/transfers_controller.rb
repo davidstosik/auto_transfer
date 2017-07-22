@@ -3,6 +3,18 @@ class TransfersController < ApplicationController
 
   def execute
     authorize_once
-    # TODO: execute transfer
+
+    # FIXME allow retry on specific errors?
+    transfer.execute
   end
+
+  private
+
+    def transfer
+      @_transfer ||= Transfer.find(transfer_id)
+    end
+
+    def transfer_id
+      params[:id]
+    end
 end
