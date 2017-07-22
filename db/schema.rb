@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722055525) do
+ActiveRecord::Schema.define(version: 20170722144538) do
 
   create_table "one_time_links", force: :cascade do |t|
     t.string "path", null: false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20170722055525) do
     t.datetime "updated_at", null: false
     t.index ["path", "token"], name: "index_one_time_links_on_path_and_token"
     t.index ["token"], name: "index_one_time_links_on_token", unique: true
+  end
+
+  create_table "transfer_schedules", force: :cascade do |t|
+    t.string "recipient"
+    t.integer "amount"
+    t.string "message"
+    t.text "schedule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transfers", force: :cascade do |t|
