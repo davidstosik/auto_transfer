@@ -31,10 +31,12 @@ module OneTimeLinkLimit
     end
 
     def invalid_token
+      Rails.logger.warn("An invalid token was used.")
       render plain: "Invalid token.", status: :unauthorized
     end
 
     def already_used
+      Rails.logger.warn("A token was tentatively used more than once.")
       render plain: "You already used this link.", status: :gone
     end
 end

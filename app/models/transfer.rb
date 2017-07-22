@@ -7,7 +7,14 @@ class Transfer < ApplicationRecord
   end
 
   def execute
-    return if executed? # FIXME raise error?
+    if executed?
+      # FIXME raise error?
+      Rails.logger.warn("Attempted to execute transfer #{id} again.")
+      return
+    end
+
+    Rails.logger.info("Executing transfer #{id}.")
+
     # TODO execute
 
     update(executed_at: Time.current)
