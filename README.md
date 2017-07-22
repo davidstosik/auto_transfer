@@ -1,24 +1,8 @@
-# README
+# Auto Transfer (name suggestions welcome!)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small experimentation related to the
+[shinseibank-ruby](https://github.com/knshiro/shinseibank-ruby) gem.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This Ruby on Rails application offers a recurring task that, when run, will
+check all scheduled transfers, and send me an email that allows me to execute
+the transfer in one click.
