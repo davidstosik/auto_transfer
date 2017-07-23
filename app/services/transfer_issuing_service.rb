@@ -9,7 +9,7 @@ class TransferIssuingService
     return unless transfer_schedule.occurs_today?
 
     create_transfer
-    # TODO email one-time link to execute transfer
+    email_one_time_link
   end
 
   private
@@ -19,5 +19,10 @@ class TransferIssuingService
     def create_transfer
       @transfer = transfer_schedule.create_transfer
       Rails.logger.info("Created Transfer #{transfer.id}.")
+    end
+
+    def email_one_time_link
+      # FIXME: using #deliver_now because #deliver_later won't work in rake task?
+      TransferExecutionMailer.email(transfer).deliver_now
     end
 end

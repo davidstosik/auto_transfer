@@ -16,5 +16,7 @@ module AutoTransfer
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = "Tokyo"
+
+    config.x.owner_email = ENV.fetch("OWNER_EMAIL", "user@example.com")
   end
 end
