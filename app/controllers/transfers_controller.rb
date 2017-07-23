@@ -6,6 +6,7 @@ class TransfersController < ApplicationController
 
     # FIXME allow retry on specific errors?
     transfer.execute
+    render plain: "Transfer executed successfully!"
   end
 
   private
