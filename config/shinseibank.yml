@@ -1,0 +1,9 @@
+defaults: &defaults
+  account: <%= ENV["SHINSEIBANK_ACCOUNT"] %>
+  password: <%= ENV["SHINSEIBANK_PASSWORD"] %>
+  pin: <%= ENV["SHINSEIBANK_PIN"] %>
+  code_card: <%= ENV["SHINSEIBANK_CODE_CARD"]&.split(",") %>
+production:
+  <<: *defaults
+development:
+  <<: *defaults

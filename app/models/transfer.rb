@@ -15,8 +15,14 @@ class Transfer < ApplicationRecord
 
     Rails.logger.info("Executing transfer #{id}.")
 
-    # TODO execute
+    shinseibank.transfer_to_registered_account(recipient, amount, remitter_info: message, remitter_info_pos: :before)
 
     update(executed_at: Time.current)
   end
+
+  private
+
+    def shinseibank
+      @_shinseibank ||= ShinseiBank.connect(Rails.configuration.x.shinseibank)
+    end
 end
